@@ -8,7 +8,7 @@ import { DefaultComponent } from './components/default.component';
 export const routes: RouterConfig = [
     {
         path: '',
-        refirectTo: '/index',
+        redirectTo: '/index',
         terminal: true
     },
     { path: 'index', component: DefaultComponent },
