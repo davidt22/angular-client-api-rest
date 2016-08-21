@@ -7,7 +7,7 @@ var default_component_1 = require('./components/default.component');
 exports.routes = [
     {
         path: '',
-        refirectTo: '/index',
+        redirectTo: '/index',
         terminal: true
     },
     { path: 'index', component: default_component_1.DefaultComponent },
