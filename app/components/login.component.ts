@@ -5,6 +5,20 @@ import {Component, OnInit} from '@angular/core';
     templateUrl: 'app/views/login.html'
 })
  
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     public titulo: string = 'Identificate';
+    public user ;
+
+    ngOnInit()
+    {
+        this.user = {
+            'email': '',
+            'password': '',
+            'gethash': false
+        };
+    }
+
+    onSubmit(){
+        console.log(this.user);
+    }
 }

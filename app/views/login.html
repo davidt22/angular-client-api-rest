@@ -2,14 +2,16 @@
     <hr>
     <h1>{{titulo}}</h1>
     <hr>
-    <form action="" class="col-md-4">
+    <form action="" class="col-md-4" #loginForm="ngForm" (ngSubmit)="onSubmit()">
         <p>
             <label>Email</label>
-            <input type="email" class="form-control" required />
+            <input type="email" class="form-control" required #email="ngForm" ngControl="email" [(ngModel)]="user.email" />
+            <span *ngIf="!email.valid">El email es obligatorio</span>
         </p>
         <p>
             <label>Password</label>
-            <input type="password" class="form-control" required />
+            <input type="password" class="form-control" required #password="ngForm" ngControl="password" [(ngModel)]="user.password" />
+            <span *ngIf="!password.valid">El password es obligatorio</span>
         </p>
         <input type="submit" value="Entrar" class="btn btn-primary" />
     </form>
