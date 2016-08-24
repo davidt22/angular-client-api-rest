@@ -8,15 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// Importar el núcleo de Angular
 var core_1 = require('@angular/core');
 var LoginComponent = (function () {
     function LoginComponent() {
+        this.titulo = 'Identificate';
     }
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login',
-            template: '<h1>Formulario de login</h1>'
+            templateUrl: 'app/views/login.html'
         }), 
         __metadata('design:paramtypes', [])
     ], LoginComponent);

@@ -1,3 +1,8 @@
-body{
-    /*background-color: black;*/
+.main{
+    margin-top: 65px;
+}
+
+.nav>li>a {
+    display: inline-block;
+
 }

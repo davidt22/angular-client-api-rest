@@ -1,10 +1,10 @@
-// Importar el núcleo de Angular
 import {Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'login',
-    template: '<h1>Formulario de login</h1>'
+    templateUrl: 'app/views/login.html'
 })
  
-// Clase del componente donde irán los datos y funcionalidades
-export class LoginComponent { }
+export class LoginComponent {
+    public titulo: string = 'Identificate';
+}
