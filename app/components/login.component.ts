@@ -29,8 +29,6 @@ export class LoginComponent implements OnInit {
 
         let id = this._loginService.getIdentity();
         let tk = this._loginService.getToken();
-        console.log(id);
-        console.log(tk);
     }
 
     onSubmit(){

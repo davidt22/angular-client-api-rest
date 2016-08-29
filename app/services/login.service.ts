@@ -3,7 +3,7 @@ import {Http, Response, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 
-@Injectable(){
+@Injectable()
     export class LoginService{
 
         public url = 'http://www.symfony-api-rest.local/app_dev.php';
@@ -45,4 +45,3 @@ import {Observable} from 'rxjs/Observable';
             return this.token;
         }
     }
-}

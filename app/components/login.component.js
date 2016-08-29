@@ -23,8 +23,6 @@ var LoginComponent = (function () {
         };
         var id = this._loginService.getIdentity();
         var tk = this._loginService.getToken();
-        console.log(id);
-        console.log(tk);
     };
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;
@@ -76,10 +74,9 @@ var LoginComponent = (function () {
             templateUrl: 'app/views/login.html',
             providers: [login_service_1.LoginService]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof login_service_1.LoginService !== 'undefined' && login_service_1.LoginService) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [login_service_1.LoginService])
     ], LoginComponent);
     return LoginComponent;
-    var _a;
 }());
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map
