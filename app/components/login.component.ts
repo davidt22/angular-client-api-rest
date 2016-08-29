@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import { ROUTER_DIRECTIVES, Router, ActivatedRoute } from '@angular/router';
 import {LoginService} from '../services/login.service';
-import {error} from "util";
+import {error} from 'util';
 
 @Component({
     selector: 'login',
@@ -16,11 +17,29 @@ export class LoginComponent implements OnInit {
     public token;
 
     constructor(
-        private _loginService: LoginService){
+        private _loginService: LoginService,
+        private _route: ActivatedRoute,
+        private _router: Router
+    ){
     }
 
     ngOnInit()
     {
+        this._route.params.subscribe(params => {
+            let logout = +params['id'];
+
+            //cerrar sesion
+            if(logout == 1){
+                localStorage.removeItem('identity');
+                localStorage.removeItem('token');
+                this.identity = null;
+                this.token = null;
+
+                window.location.href = '/login'; //redireccion al login
+                this._router.navigate(["/index"]);//redireccion a index
+            }
+        });
+
         this.user = {
             'email': '',
             'password': '',
@@ -58,6 +77,7 @@ export class LoginComponent implements OnInit {
                                         localStorage.setItem('token', JSON.stringify(token));
 
                                         //redireccion
+                                        window.location.href = '/';
                                     }
                                 }
                             },
