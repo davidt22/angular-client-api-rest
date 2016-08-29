@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     ngOnInit()
     {
         this._route.params.subscribe(params => {
-            let logout = +params['id'];
+            let logout = +params['id'];//convierte a entero
 
             //cerrar sesion
             if(logout == 1){
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
                 this.token = null;
 
                 window.location.href = '/login'; //redireccion al login
-                this._router.navigate(["/index"]);//redireccion a index
+                //this._router.navigate(["/index"]);//redireccion a index
             }
         });
 
@@ -46,8 +46,11 @@ export class LoginComponent implements OnInit {
             'gethash': 'false'
         };
 
-        let id = this._loginService.getIdentity();
-        let tk = this._loginService.getToken();
+        let identity = this._loginService.getIdentity();
+
+        if(identity != null && identity.sub){
+            this._router.navigate(["/index"]);//redireccion a index
+        }
     }
 
     onSubmit(){

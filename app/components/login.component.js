@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,7 +21,7 @@ var LoginComponent = (function () {
     LoginComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._route.params.subscribe(function (params) {
-            var logout = +params['id'];
+            var logout = +params['id']; //convierte a entero
             //cerrar sesion
             if (logout == 1) {
                 localStorage.removeItem('identity');
@@ -28,7 +29,6 @@ var LoginComponent = (function () {
                 _this.identity = null;
                 _this.token = null;
                 window.location.href = '/login'; //redireccion al login
-                _this._router.navigate(["/index"]); //redireccion a index
             }
         });
         this.user = {
@@ -36,8 +36,10 @@ var LoginComponent = (function () {
             'password': '',
             'gethash': 'false'
         };
-        var id = this._loginService.getIdentity();
-        var tk = this._loginService.getToken();
+        var identity = this._loginService.getIdentity();
+        if (identity != null && identity.sub) {
+            this._router.navigate(["/index"]); //redireccion a index
+        }
     };
     LoginComponent.prototype.onSubmit = function () {
         var _this = this;
@@ -94,6 +96,6 @@ var LoginComponent = (function () {
         __metadata('design:paramtypes', [login_service_1.LoginService, router_1.ActivatedRoute, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
-})();
+}());
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map
