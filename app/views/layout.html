@@ -10,14 +10,14 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" [routerLink]="['/index']">
-                    <!--<img src="./assets/images/logo.png" height="50" style="margin-top: -15px" />-->
+                    <img src="./assets/images/logo.png" height="50" style="margin-top: -15px" />
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="bd-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
                         <a [routerLink]="['/index']">Home</a>
-                        <a [routerLink]="['/index']">Crear Video</a>
+                        <a [routerLink]="['/index']" *ngIf="identity">Crear Video</a>
                     </li>
                 </ul>
 
@@ -26,6 +26,27 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             {{identity.name}} {{identity.surname}} <span class="caret"></span>
                         </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a [routerLink]="['/index']">
+                                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                                    Mi canal
+                                </a>
+                            </li>
+                            <li>
+                                <a [routerLink]="['/index']">
+                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                    Ajustes
+                                </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li>
+                                <a [routerLink]="['/index']">
+                                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                                    Salir
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
 
