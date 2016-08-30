@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
 
     onSubmit(){
         console.log(this.user);
+
         this._loginService.signup(this.user).subscribe( //peticion ajax
             response => {
                 let identity = response;
