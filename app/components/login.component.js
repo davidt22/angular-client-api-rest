@@ -65,7 +65,7 @@ var LoginComponent = (function () {
                         }
                         else {
                             if (!_this.token.status) {
-                                localStorage.setItem('token', JSON.stringify(token));
+                                localStorage.setItem('token', token);
                                 //redireccion
                                 window.location.href = '/';
                             }

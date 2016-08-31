@@ -34,7 +34,7 @@ import {Observable} from 'rxjs/Observable';
         }
 
         getToken(){
-            let token = JSON.parse(localStorage.getItem('token'));
+            let token = localStorage.getItem('token');
 
             if(token != 'undefined'){
                 this.token = token;
@@ -51,6 +51,15 @@ import {Observable} from 'rxjs/Observable';
             let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
 
             return this._http.post(this.url + '/user/new', params, {headers: headers})
+                    .map(res => res.json());
+        }
+
+        updateUser(user_to_update){
+            let json = JSON.stringify(user_to_update);
+            let params = 'json=' + json + '&authorization=' + JSON.stringify(this.getToken());
+            let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
+
+            return this._http.post(this.url + '/user/edit', params, {headers: headers})
                     .map(res => res.json());
         }
     }

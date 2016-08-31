@@ -34,7 +34,7 @@ var LoginService = (function () {
         return this.identity;
     };
     LoginService.prototype.getToken = function () {
-        var token = JSON.parse(localStorage.getItem('token'));
+        var token = localStorage.getItem('token');
         if (token != 'undefined') {
             this.token = token;
         }
@@ -48,6 +48,13 @@ var LoginService = (function () {
         var params = 'json=' + json;
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         return this._http.post(this.url + '/user/new', params, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    LoginService.prototype.updateUser = function (user_to_update) {
+        var json = JSON.stringify(user_to_update);
+        var params = 'json=' + json + '&authorization=' + JSON.stringify(this.getToken());
+        var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        return this._http.post(this.url + '/user/edit', params, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     LoginService = __decorate([

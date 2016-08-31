@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
                                     alert('Error en servidor');
                                 } else {
                                     if(!this.token.status){
-                                        localStorage.setItem('token', JSON.stringify(token));
+                                        localStorage.setItem('token', token);
 
                                         //redireccion
                                         window.location.href = '/';
